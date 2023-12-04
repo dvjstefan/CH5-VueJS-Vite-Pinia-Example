@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none !important;
+    -webkit-touch-callout: none !important;
+    user-select: none;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000;
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-default {
+    // Layout
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+
+    // Appearance
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 36px;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+
+    // Functionality
+    outline: none;
+
+    // Colors
+    background-color: transparent;
+    color: $color-black;
+
+    // Size
+    padding: 0 16px;
+    margin: 6px 8px;
+    min-width: 124px;
+    height: 60px;
+
+    // Border
+    border: solid 1px $color-border;
+    border-radius: 4px;
+
+    &.primary {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $color-white;
+    }
+
+    &.red {
+        background-color: $color-red;
+        border-color: $color-red;
+        color: $color-white;
+    }
+
+    &.green {
+        background-color: $color-green;
+        border-color: $color-green;
+        color: $color-white;
+    }
+    
+    &:active {
+        background: lighten($color-primary, 10);
+        border-color: lighten($color-primary, 10);
+    }
+}
+.btn-toggle {
+    @extend .btn-default; // Inherit styles from btn-default
+  
+    // Modify or add specific styles for the toggle button
+    background-color: $color-grey-light; // A neutral color for the default state
+    color: $color-text-primary; // Text color for the button
+  
+    // You might want to add a transition for smooth color change
+    transition: background-color 0.3s ease, color 0.3s ease;
+  
+    // Styles for the button when it is active (powered on)
+    &.green {
+      background-color: $color-green; // Green color for ON state
+      border-color: $color-green; // Matching border color
+      color: $color-white; // White text color for contrast
+    }
+  
+    // Styles for the button when it is not active (powered off)
+    &.red {
+      background-color: $color-red; // Red color for OFF state
+      border-color: $color-red; // Matching border color
+      color: $color-white; // White text color for contrast
+    }
+  
+    // An additional style for hover state if needed
+    //&:hover {
+    //  background-color: darken($color-grey-light, 10%);
+    //}
+  }

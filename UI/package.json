@@ -1,0 +1,34 @@
+{
+  "name": "ch5-002",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:build:dep": "vite build --mode development && npm run archive && npm run deploy1",
+    "archive": "ch5-cli archive -p crestron-vite-testing -d dist -o tsw",
+    "archiveweb": "ch5-cli archive -p crestron-xweb -d dist -o xweb",
+    "deploy1": "ch5-cli deploy -H 192.168.0.212 -p -t touchscreen tsw/crestron-vite-testing.ch5z",
+    "deployweb": "ch5-cli deploy -H 192.168.0.59 -p -t web xweb/crestron-xweb.ch5z",
+    "build:prod": "npm run build && ch5-cli archive -p crestron-xweb -d dist -o xweb",
+    "build:dev:deploy": "vite build --mode development && npm run archiveweb && npm run deployweb",
+    "onestep": "npm run build && npm run archive && npm run deploy1"
+  },
+  "dependencies": {
+    "@crestron/ch5-crcomlib": "2.5.0",
+    "eruda": "^3.0.1",
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@crestron/ch5-utilities-cli": "^2.0.0",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "sass": "^1.69.5",
+    "vite": "^5.0.0",
+    "vite-plugin-singlefile": "^0.13.5"
+  }
+}
