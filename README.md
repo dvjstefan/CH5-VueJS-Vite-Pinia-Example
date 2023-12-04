@@ -23,7 +23,8 @@ To install and run this project, follow these steps:
 #### Clone the Repository
 
 <pre><code>git clone https://github.com/dvjstefan/CH5-VueJS-Vite-Pinia-Example.git
-cd CH5-VueJS-Vite-Pinia-Example</code></pre>
+cd CH5-VueJS-Vite-Pinia-Example
+cd UI</code></pre>
 
 #### Install Dependencies
 
