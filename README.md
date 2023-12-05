@@ -50,8 +50,6 @@ This project uses several dependencies and development tools, each serving a spe
 
 - `@crestron/ch5-crcomlib`  
   **Crestron CH5 Component Library** - Provides JavaScript APIs for communication with Crestron control systems, facilitating integration of Crestron hardware capabilities into Vue apps.
-- `@crestron/ch5-webxpanel`  
-  **Crestron CH5 WebXPanel** - Enables Vue applications to function as user interfaces on Crestron touch screens and mobile devices.
 
 - `eruda`  
   **Mobile Web Debugger** - A console tool for debugging web pages on mobile devices, essential for mobile environment testing and debugging.
