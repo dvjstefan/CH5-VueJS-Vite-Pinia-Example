@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { processToggleZone, processSelectSource, processAnalogValue } from '../plugins/crestron/processMutation';
 
+
 // Define the audio store using Pinia.
 export const useAudioStore = defineStore('audio', {
   // State of the store - initial state setup.
@@ -12,10 +13,10 @@ export const useAudioStore = defineStore('audio', {
   // Actions are like methods used to change the state.
   actions: {
     // Initializes the zones based on a given number.
-    initializeZones(numberOfZones) {
+    initializeZones(numberOfZones = 5) {
+      console.log(`Initializing ${numberOfZones} zones`); // log statement
       this.zones = {}; // Reset zones to an empty state.
-      for (let i = 1; i <= numberOfZones; i++) {
-        // Create each zone with default settings.
+      for (let i = 1; i <= numberOfZones; i++) { // Always create 5 zones if there are no value from control system
         this.zones[`zone${i}`] = this.createZoneDefaults(i);
       }
     },

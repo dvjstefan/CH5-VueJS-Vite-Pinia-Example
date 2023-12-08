@@ -43,12 +43,16 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { debounce } from "lodash";
 import { useAudioStore } from "../store/modules/audio";
 import { zoneDefinitions } from "../store/plugins/zoneSettings";
 
 const store = useAudioStore();
+
+onMounted(() => {
+  store.initializeZones(); // This ensures zones are initialized when the component mounts
+});
 
 const zones = computed(() => {
   return Object.keys(store.zones).map((key) => {
@@ -134,6 +138,7 @@ const toggleZone = (zoneId) => {
   background: #2163b9; /* Thumb background */
   cursor: pointer; /* Cursor changes when hovering the thumb */
   border-radius: 50%; /* Makes the thumb circular */
+  margin-top: -9px; /* Centers the thumb over the track */
 }
 
 /* Style for the track (the line the thumb slides on) */
@@ -142,12 +147,6 @@ const toggleZone = (zoneId) => {
   height: 8px; /* Height of the track */
   background: #ddd; /* Background of the track */
   border-radius: 25px; /* Rounds the corners of the track */
-}
-
-/* Style for the filled part of the track to the left of the thumb */
-.horizontal-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  margin-top: -9px; /* Centers the thumb over the track */
 }
 
 /* Focus styles */

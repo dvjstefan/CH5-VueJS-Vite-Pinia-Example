@@ -1,5 +1,5 @@
 import { createMemoryHistory, createWebHistory, createRouter } from 'vue-router';
-import CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib'; // Ensure this import path is correct
+import * as CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib';
 import Home from '../views/Home.vue';
 import Displays from '../views/Displays.vue';
 import Audio from '../views/Audio.vue';
@@ -24,14 +24,15 @@ const routes = [
 ];
 
 // Determine which history mode to use based on the environment
-//const history = CrComLib.isCrestronTouchscreen()
-//  ? createMemoryHistory()
-//  : createWebHistory();
+const history = CrComLib.isCrestronTouchscreen()
+  ? createMemoryHistory()
+  : createWebHistory();
 
 // Create the router instance
- const router = createRouter({
-  history: createMemoryHistory(),
-  routes,
-});
+const router = createRouter({
+    history: history, // Use the 'history' variable here
+    routes,
+  });
+  
 
 export default router;
