@@ -23,7 +23,8 @@ To install and run this project, follow these steps:
 #### Clone the Repository
 
 <pre><code>git clone https://github.com/dvjstefan/CH5-VueJS-Vite-Pinia-Example.git
-cd CH5-VueJS-Vite-Pinia-Example</code></pre>
+cd CH5-VueJS-Vite-Pinia-Example
+cd UI</code></pre>
 
 #### Install Dependencies
 
@@ -49,8 +50,6 @@ This project uses several dependencies and development tools, each serving a spe
 
 - `@crestron/ch5-crcomlib`  
   **Crestron CH5 Component Library** - Provides JavaScript APIs for communication with Crestron control systems, facilitating integration of Crestron hardware capabilities into Vue apps.
-- `@crestron/ch5-webxpanel`  
-  **Crestron CH5 WebXPanel** - Enables Vue applications to function as user interfaces on Crestron touch screens and mobile devices.
 
 - `eruda`  
   **Mobile Web Debugger** - A console tool for debugging web pages on mobile devices, essential for mobile environment testing and debugging.
