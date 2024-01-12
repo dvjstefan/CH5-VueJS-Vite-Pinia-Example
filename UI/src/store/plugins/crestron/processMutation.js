@@ -5,13 +5,13 @@ import * as CrComLib from "@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib";
 
 // Sets an analog value for a specified join.
 export function setAnalog(join, value) {
-  CrComLib.publishEvent("n", join, value);
+  CrComLib.publishEvent("n", join.toString(), value);
 }
 
 // Simulates a button press and release on a digital join.
 export function pulse(join) {
-  CrComLib.publishEvent("b", join, true); // Press
-  setTimeout(() => CrComLib.publishEvent("b", join, false), 10); // Release
+  CrComLib.publishEvent("b", join.toString(), true); // Press
+  setTimeout(() => CrComLib.publishEvent("b", join.toString(), false), 10); // Release
 }
 
 // Emulates an increment button press on join 1.
@@ -41,6 +41,9 @@ export function processSetPowerFeedback(id, power) {
 }
 // Toggles a zone's state based on its ID.
 export function processToggleZone(id) {
+  if (import.meta.env.MODE == "development") {
+    console.log(`Toggling zone with ID: ${id}`); // Add this for debugging
+  }
   let join;
     // Map zone IDs to their respective join numbers.
   switch (id) {
@@ -48,6 +51,7 @@ export function processToggleZone(id) {
     // Each case associates a zone ID with a specific join number.
     // Example: join 20 corresponds to zone1.
     case "zone1":
+      //console.log(`Toggling zone with ID: 20!`);
       join = 20;
       break;
     case "zone2":
@@ -68,6 +72,9 @@ export function processToggleZone(id) {
 }
 // Selects a source for a zone based on its ID and the source number.
 export function processSelectSource(id, source) {
+  if (import.meta.env.MODE == "development") {
+    console.log(`Toggling Source with ID: ${id} & ${source}`); // Add this for debugging
+  }
   let join;
     // Determine the join number based on the zone ID and source number.
   switch (id) {

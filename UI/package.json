@@ -1,7 +1,7 @@
 {
   "name": "ch5-002",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.30",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,15 +9,20 @@
     "preview": "vite preview",
     "archivetsw": "ch5-cli archive -p crestron-vite-testing -d dist -o tsw",
     "archiveweb": "ch5-cli archive -p crestron-xweb -d dist -o xweb",
-    "deploytsw": "ch5-cli deploy -H {IPADDRESS} -p -t touchscreen tsw/crestron-vite-testing.ch5z",
-    "deployweb": "ch5-cli deploy -H {IPADDRESS} -p -t web xweb/crestron-xweb.ch5z",
+    "archivemobile": "ch5-cli archive -p crestron-mobile -d dist -o mobile",
+    "deploytsw": "ch5-cli deploy -H {TSW-IP} -p -t touchscreen tsw/crestron-vite-testing.ch5z",
+    "deployweb": "ch5-cli deploy -H {PROCESSOR-IP} -p -t web xweb/crestron-xweb.ch5z",
+    "deploymobile": "ch5-cli deploy -H {PROCESSOR-IP} -p -t mobile mobile/crestron-mobile.ch5z",
     "onestep:dev:web": "vite build --mode development && npm run archiveweb && npm run deployweb",
     "onestep:dev:tsw": "vite build --mode development && npm run archivetsw && npm run deploytsw",
+    "onestep:dev:mobile": "vite build --mode development && npm run archivemobile && npm run deploymobile",
     "onestep:prod:web": "npm run build && npm run archiveweb && npm run deployweb",
-    "onestep:prod:tsw": "npm run build && npm run archivetsw && npm run deploytsw"
+    "onestep:prod:tsw": "npm run build && npm run archivetsw && npm run deploytsw",
+    "onestep:prod:mobile": "npm run build && npm run archivemobile && npm run deploymobile"
   },
   "dependencies": {
     "@crestron/ch5-crcomlib": "2.5.0",
+    "@crestron/ch5-webxpanel": "2.5.0",
     "eruda": "^3.0.1",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",

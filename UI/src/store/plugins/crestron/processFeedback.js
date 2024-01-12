@@ -271,13 +271,6 @@ export default function processFeedback() {
                     audioStore.setSliderValue('zone5', analogValue);
                 }
             },
-            // Example join for initializing zones based on an analog value.
-            {
-                join: 9,
-                callback: (analogValue) => {
-                    audioStore.initializeZones(analogValue);
-                }
-            }
             
             // ... additional analog joins
         ],

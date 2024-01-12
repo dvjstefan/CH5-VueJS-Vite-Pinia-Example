@@ -7,7 +7,7 @@
         <div class="select-source">Select Source</div>
       </div>
 
-      <!-- Toggle Button, Slider, and Action Buttons -->
+      <!-- Toggle Button, Slider, and Action Buttons @click="toggleZone(zone.id)" -->
       <div class="zone-controls">
         <button
           class="toggle-button btn-default"
@@ -51,7 +51,7 @@ import { zoneDefinitions } from "../store/plugins/zoneSettings";
 const store = useAudioStore();
 
 onMounted(() => {
-  store.initializeZones(); // This ensures zones are initialized when the component mounts
+  //store.initializeZones(); // This ensures zones are initialized when the component mounts
 });
 
 const zones = computed(() => {
@@ -77,15 +77,8 @@ const selectSource = (id, source) => {
   store.selectSource(id, source);
 };
 
-const toggleZone = (zoneId) => {
-  const zone = store.zones[zoneId];
-  if (!zone) {
-    console.error(`Zone with id ${zoneId} not found.`);
-    return;
-  }
-  zone.isOn = !zone.isOn;
-
-  console.log(`Zone ${zoneId} is now ${zone.isOn ? "ON" : "OFF"}`);
+const toggleZone = (id) => {
+  store.toggleZone(id);
 };
 </script>
 

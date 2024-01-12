@@ -1,3 +1,4 @@
+import './store/plugins/webxpanel.js'
 import { createApp } from 'vue' // Import the function to create a Vue application instance
 import './style.css' // Import the main stylesheet for the application
 import App from './App.vue' // Import the root Vue component

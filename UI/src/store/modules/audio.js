@@ -1,40 +1,54 @@
 import { defineStore } from 'pinia';
 import { processToggleZone, processSelectSource, processAnalogValue } from '../plugins/crestron/processMutation';
 
-
 // Define the audio store using Pinia.
 export const useAudioStore = defineStore('audio', {
   // State of the store - initial state setup.
   state: () => ({
     // Zones object to store the state of each zone.
-    zones: {}, // Start with an empty object.
+    zones: {
+      zone1: {
+        id: 'zone1',
+        name: 'Zone 1',
+        isOn: false,
+        sliderValue: 0,
+        activeSource: 1,
+      },
+      zone2: {
+        id: 'zone2',
+        name: 'Zone 2',
+        isOn: false,
+        sliderValue: 0,
+        activeSource: 1,
+      },
+      zone3: {
+        id: 'zone3',
+        name: 'Zone 3',
+        isOn: false,
+        sliderValue: 0,
+        activeSource: 1,
+      },
+      zone4: {
+        id: 'zone4',
+        name: 'Zone 4',
+        isOn: false,
+        sliderValue: 0,
+        activeSource: 1,
+      },
+      zone5: {
+        id: 'zone5',
+        name: 'Zone 5',
+        isOn: false,
+        sliderValue: 0,
+        activeSource: 1,
+      },
+    },
   }),
 
-  // Actions are like methods used to change the state.
+  // Actions are methods used to change the state.
   actions: {
-    // Initializes the zones based on a given number.
-    initializeZones(numberOfZones = 5) {
-      console.log(`Initializing ${numberOfZones} zones`); // log statement
-      this.zones = {}; // Reset zones to an empty state.
-      for (let i = 1; i <= numberOfZones; i++) { // Always create 5 zones if there are no value from control system
-        this.zones[`zone${i}`] = this.createZoneDefaults(i);
-      }
-    },
-
-    // Helper method to create default settings for a zone.
-    createZoneDefaults(id) {
-      return {
-        id: `zone${id}`, // Unique identifier for the zone.
-        name: `Zone ${id}`, // Default name for the zone.
-        isOn: false, // Initial power state.
-        sliderValue: 0, // Initial slider value (e.g., volume).
-        activeSource: null, // Initial active source.
-      };
-    },
-
     // Sets the power feedback for a zone.
     setPowerFeedback({ id, power }) {
-      // Check if the zone exists before setting power state.
       if (this.zones[id]) {
         this.zones[id].isOn = power;
       }
@@ -42,8 +56,7 @@ export const useAudioStore = defineStore('audio', {
 
     // Toggles the power state of a zone.
     toggleZone(id) {
-      processToggleZone(id); // External processing for toggling.
-      // Check if the zone exists before toggling.
+          processToggleZone(id); // External processing for toggling.
       if (this.zones[id]) {
         this.zones[id].isOn = !this.zones[id].isOn; // Toggle power state.
       }
@@ -52,7 +65,6 @@ export const useAudioStore = defineStore('audio', {
     // Sets the slider value (e.g., volume) for a zone.
     setSliderValue(id, value) {
       processAnalogValue(id, value); // External processing for the slider.
-      // Check if the zone exists before setting the slider value.
       if (this.zones[id]) {
         this.zones[id].sliderValue = value; // Update slider value.
       }
@@ -61,10 +73,11 @@ export const useAudioStore = defineStore('audio', {
     // Selects a source for a zone.
     selectSource(id, source) {
       processSelectSource(id, source); // External processing for selecting a source.
-      // Check if the zone exists before setting the active source.
       if (this.zones[id]) {
         this.zones[id].activeSource = source; // Set the active source.
       }
     },
+
+    // Other actions can be added here as needed.
   },
 });
